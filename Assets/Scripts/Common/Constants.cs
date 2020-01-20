@@ -124,7 +124,7 @@ public class Constants {
     public static int ComboSpace = 500;
 
     //是否在线
-    public static bool Online = true;
+    public static bool Online = false;
 
     public static string IsFirst = "isFirst";
 

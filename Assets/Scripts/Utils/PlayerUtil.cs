@@ -12,18 +12,14 @@ public class PlayerUtil
     public static PlayerData LoadLocalPlayerData()
     {
         string text = "";
-        if(PlayerPrefs.GetInt(Constants.IsFirst) == 0)
+        string path = Application.persistentDataPath + "/player.json";
+        if(File.Exists(path))
         {
-           text = Resources.Load<TextAsset>("ResCfgs/player").text;
-           PlayerPrefs.SetInt(Constants.IsFirst,1);
+            text = File.ReadAllText(path);
         }
         else
         {
-            string path = Application.persistentDataPath + "/player.json";
-            if(File.Exists(path))
-            {
-                text = File.ReadAllText(path);
-            }
+            text = Resources.Load<TextAsset>("ResCfgs/player").text;
         }
         PlayerData pd = KJson.Parse<PlayerData>(text);
         return pd;
